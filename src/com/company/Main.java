@@ -3,14 +3,28 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-    public static int validarEntero(Scanner sc) {
-        int numeroValidado;
-        while (!sc.hasNextInt()) {
-            System.out.print("¡Introduce un valor numñerico entero!");
-            sc.next();
+    public static double validador(int opcion) {
+        double validado = 0;
+        Scanner sc = new Scanner(System.in);
+        switch (opcion) {
+            case 0: {
+                while (!sc.hasNextInt()) {
+                    System.out.print("¡Por favor introduce un número entero! ");
+                    sc.next();
+                }
+                validado = sc.nextDouble();
+            }
+            break;
+            case 1: {
+                while (!sc.hasNextDouble()) {
+                    System.out.print("¡Por favor introduce un número decimal! ");
+                    sc.next();
+                }
+                validado = sc.nextDouble();
+            }
+            break;
         }
-        numeroValidado = sc.nextInt();
-        return numeroValidado;
+        return validado;
     }
 
     public static boolean validarNumero(int numero) {
@@ -50,10 +64,10 @@ public class Main {
         char opcion;
         System.out.println("¡Vamos a realizar una serie de operaciones con un nñumero!");
         System.out.print("Introduce un número: ");
-        numero = validarEntero(sc);
+        numero = (int) validador(0);
         while (!validarNumero(numero)) {
             System.out.print("¡Introduce un núumero entre 0 y 9999! ");
-            numero = validarEntero(sc);
+            numero = (int) validador(0);
         }
         System.out.println("--MENÚ--");
         System.out.println("[1] ¿Cuántas cifras tiene?");
